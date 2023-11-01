@@ -1,0 +1,42 @@
+{% extends "html/RegisterTemplate.html" %}
+
+{% block inputContent %}
+        
+        <div class="div-log">
+            <span id="subspaninput"> Nickname </span>
+            <label class="container">
+                <input class="inputText" aria-label="Name"  aria-required="true"  type="text"  maxlength=30 name="nickname"/>
+            </label>
+        </div>
+
+        <div class="div-separete"></div>
+        <div class="div-log">
+            <span id="subspaninput"> Email </span>
+            <label class="container">
+                <input class="inputText" aria-label="Email" autocomplete="given-email" aria-required="true"  type="email"  maxlength=30 name="mail" />
+            </label>
+        </div>
+
+        <div class="div-separete"></div>
+        <div class="div-log">
+            <span id="subspaninput"> Password </span>
+            <label class="container">
+                <input class="inputText" aria-label="Name"  aria-required="true"  type="password"  minlenght=8 maxlength=30 name="password" />
+            </label>
+        </div>
+
+        <div class="div-separete"></div>
+        <div class="div-log">
+            <span id="subspaninput"> Description </span>
+            <div class="div-separete"></div>
+            <textarea aria-label="Description" aria-required="true"  type="input"  maxlength=500 name="descr"></textarea>
+        </div>
+
+        <div class="div-separete"></div>
+        <div class="div-log">
+            <button class="buttonLog" type="submit"  href="/register" onclick="test()">
+                <div> Register </div>
+            </button> 
+        </div>
+
+{% endblock %}

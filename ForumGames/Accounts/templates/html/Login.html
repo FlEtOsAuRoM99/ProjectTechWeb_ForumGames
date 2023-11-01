@@ -1,0 +1,30 @@
+{% extends "html/footbarRegLog.html" %}
+
+{%block contentRegLog %}
+    <form class="log" method="POST">
+
+        {% csrf_token %}
+        {{from}}
+
+        <div class="div-log">
+            <span id="subspaninput"> Nickname </span>
+            <label class="container">
+                <input class="inputText" aria-label="Nickname" autocomplete="given-name" aria-required="true"  type="text"  maxlength=30 name="name" value/>
+            </label>
+        </div>
+        <div class="div-separete"></div>
+        <div class="div-log">
+            <span id="subspaninput"> Password </span>
+            <label class="container">
+                <input class="inputText" aria-label="Password" autocapitalize="off" autocomplete="off" aria-required="true" type="password" name="password"/>
+            </label>
+        </div>
+        <div class="div-log">
+            <button class="buttonLog" type="submit" href="/home">
+                <div class="LogInButton"> 
+                    Log in
+                </div>
+            </button>
+        </div>
+    </form> 
+{% endblock %}
