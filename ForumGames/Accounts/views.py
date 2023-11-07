@@ -9,10 +9,8 @@ import bcrypt
 def login(request):
         used = "/register"
         if request.method == 'POST':
-            print(Accounts.password)
-            form = AuthenticationForm(request=request, data=request.POST)
-            print(form)
-            
+            print("Enter: ", Accounts.password)
+            '''
             if form.is_valid():
                 nickname = form.cleaned_data.get('nickname')
                 password = form.cleaned_data.get('password')
@@ -26,6 +24,7 @@ def login(request):
                     messages.error(request, "Invalid username or password.")
             else:
                 messages.error(request, "Invalid username or password.")
+            '''
         return render(request = request, 
                       template_name = "html/Login.html", 
                       context={"use": used})
@@ -43,12 +42,19 @@ def register(request):
         hashPass = bcrypt.hashpw(request.POST.get('password').encode('utf-8'), bcrypt.gensalt())
         mail = request.POST.get('mail')
         descr = request.POST.get('descr')
+
         if nickname != "" and hashPass != "" and mail != "":
-            Accounts(nickname=nickname, mail=mail, password=hashPass, descr=descr).save()
-            login_request(request, True)
-            return redirect("Accounts:Home")
+            if len(Accounts.objects.filter(nickname=nickname)) == 1:
+                print("nickname unsable")
+                messages.error(request, "Hi")
+            elif len(Accounts.objects.filter(mail=mail)) == 1:
+                print("mail unsable")
+            else:
+                Accounts(nickname=nickname, mail=mail, password=hashPass, descr=descr).save()
+                login(request)
+                return redirect("Accounts:Home")
         else:
-            print("Insert all fields")
+            print("Before, you must insert all fields")
     used = "/login"
     return render(request = request, 
                   template_name='html/Register.html', 
