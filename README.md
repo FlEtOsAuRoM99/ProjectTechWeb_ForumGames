@@ -3,3 +3,4 @@ Hi evreyone. In this repository I would like to develop my project of Web Techno
 
 ---> As I already wrote, this project is only developed for the university. I will then leave all the information, such as those of security, written. <---
 
+Here miss a pipfile for django installation when you download, you need to install pipenv and after install pipenv, you need to install django pipenv install django in this directory.
