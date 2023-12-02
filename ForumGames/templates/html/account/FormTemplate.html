@@ -1,0 +1,17 @@
+
+{% extends "html/GeneralTemplate.html" %}
+
+{%block content %}
+    <form name="form" class="log" method="POST">
+
+        
+        {% block bodyForm %}
+        {% endblock %}
+    </form> 
+    
+{% endblock %}
+
+{%block footbar%}
+    {%block footer%}
+    {%endblock%}
+{%endblock%}

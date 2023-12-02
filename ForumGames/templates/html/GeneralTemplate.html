@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {%load static%}
+        <link rel="stylesheet" href="{% static "css/GeneralStyle.css" %}">
+        {%block title%}
+        {%endblock%}
+    </head>
+    <body>
+        <div class="div-menu">
+            
+            <h3> 
+                <a href="{%url "Home"%}" class="a-title">
+                    {%block LOGO%}
+                    {%endblock%}
+                </a> 
+            </h3>
+
+            <div class="div-global">
+                <main>
+                    <article>
+                            
+                        {% block content %}
+                        {% endblock %} 
+                    </article>
+                    <article>
+                        <div id="error">
+                            {%if messages %}
+                                {%for message in messages%}
+                                    {{message}}
+                                {% endfor %}
+                            {%endif%}
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+        <div class="div-menu-footbar">
+
+            <div class="div-footbar">
+    
+                <footbar>
+                    
+                        {% block footbar %}
+                        {% endblock %}
+                    
+                </footbar>
+            </div>
+        </div>  
+    </body>
+</html>

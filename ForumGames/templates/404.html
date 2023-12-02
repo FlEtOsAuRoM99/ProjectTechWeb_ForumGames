@@ -1,0 +1,23 @@
+
+{%extends "html/GeneralTemplate.html"%}
+
+
+{% block title %}
+    <title>
+        Errore 404
+    </title>
+{%endblock%}
+
+{%block content%}
+<p> Errore, pagina non trovata </p>
+{%endblock%}
+
+{% block footbar %}
+        <a href="{%url "mUser:Login"%}" class="a-footer"> Login </a>
+        |
+        <a href="{%url "mUser:Register"%}" class="a-footer"> Register </a>
+{% endblock %}
+
+{%block LOGO%}
+    <span id="subspaninput"> Forum GAMES </span>
+{%endblock%}
