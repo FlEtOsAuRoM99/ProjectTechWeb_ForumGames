@@ -1,0 +1,61 @@
+{%extends "html/GeneralTemplate.html"%}
+
+
+
+{%block contentHeader%}
+    {%if user.is_authenticated%}
+        <div class="div-log">
+            <a href="{%url 'Computer:createComputer'%}"class="a-footer">
+                Create 
+            </a>
+            your new computer
+        </div>
+    {%endif%}
+{%endblock%}
+
+
+{%block content%}
+    {%block inserimentoPost%}
+    {%endblock%}
+    <form name="form" class="log" method="POST" enctype="multipart/form-data">
+        {%block bodyBlog%}
+        {%endblock%}
+    </form>
+        
+    
+{%endblock%}
+
+
+{%block footbar%}
+    {%if user.is_authenticated%}
+
+        <footbar>
+            <a href="{%url 'mUser:Logout'%}" class="a-footer"> Logout </a>
+        </footbar>
+    {%else%}
+        <footbar>
+            <a href="{% url 'mUser:Login'%}" class="a-footer">
+                <span id="subspaninput"> 
+                    Login 
+                </span>
+            </a>
+            |
+            <span id="subspaninput"> 
+                <a href="{%url 'mUser:Register'%}" class="a-footer"> Register </a>
+            </span>
+        </footbar>
+    {%endif%}
+{%endblock%}
+
+{%block title%}
+    <title>
+        Home
+    </title>
+{%endblock%}
+
+{%block LOGO%}
+    <span id="subspaninput"> Forum GAMES </span>
+{%endblock%}
+
+{%block tuaConfigurazione%}
+{%endblock%}

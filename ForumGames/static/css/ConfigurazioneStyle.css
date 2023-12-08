@@ -1,0 +1,12 @@
+
+.div-sinistra{
+    border: 10px solid;
+    border-radius: 1;
+    border-color: black;
+}
+.div-configurazione{
+    position: absolute;
+    width: 20%;
+    padding: auto;
+}
+

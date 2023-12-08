@@ -1,0 +1,22 @@
+
+{% extends "html/GeneralTemplate.html" %}
+
+{%block newStyleSheet%}
+{%load static%}
+{%endblock%}
+
+{%block content %}
+    <form name="form" class="log" method="POST" enctype="multipart/form-data">
+
+        
+        {% block bodyForm %}
+        {% endblock %}
+    </form> 
+    
+{% endblock %}
+
+
+{%block footbar%}
+    {%block footer%}
+    {%endblock%}
+{%endblock%}

@@ -1,0 +1,43 @@
+{%extends "html/HomeTemplate.html"%}
+
+{%block newStyleSheet%}
+{%load static%}
+<link rel="stylesheet" href="{% static 'css/ConfigurazioneStyle.css' %}">
+
+{%endblock%}
+
+{%block tuaConfigurazione%}
+    {%if user.is_authenticated %}
+        <div class="div-sinistar">
+            <article>
+                <div class="div-contenitore">
+                    <div class="div-configurazione">
+                        <div class="div-log">
+                            <h5> La tua configurazione </h5>
+                        </div>
+                        
+                        <div class="div-log"> 
+                            {%for i in elenco%}
+                                <br>
+                                <span id="subspaninput">{{i}}</span>
+                            {%endfor%} 
+                        </div>
+                        <div class="div-log">
+                            <img src="{{ph.url}}" width="100%" height="100%"/>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    {%endif%}
+{%endblock%}
+
+{%block bodyBlog%}
+    <div class="div-separete"></div>
+    {%csrf_token%}
+    {{form.as_div}}
+{%endblock%}
+
+
+{%block inserimentoPost%}
+{%endblock%}
