@@ -11,9 +11,12 @@ def register_req(request):
     if request.method == 'POST':
         if form.is_valid():
             if form.checkOnlyMail():
-                u = User.objects.create_user(form.get_usernameByForm, form.get_emailByForm, form.get_passwordByForm)
-                u.save()
-                return redirect("mUser:Login")
+                if form.checkPassword():
+                    u = User.objects.create_user(form.get_usernameByForm, form.get_emailByForm, form.get_passwordByForm)
+                    u.save()
+                    return redirect("mUser:Login")
+                else:
+                    messages.error(request, "Errore nell'inserire la password")
             else:
                 messages.error(request, "Mail già in uso")
                 print("Mail già in uso")
