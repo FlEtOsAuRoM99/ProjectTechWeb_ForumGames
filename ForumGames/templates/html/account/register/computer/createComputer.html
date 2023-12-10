@@ -23,28 +23,12 @@
 {% endblock %}
 
 {%block footbar%}
-    {%if user.is_authenticated%}
         <a href="{% url 'mUser:Logout'%}" class="a-footer">
             <span id="subspaninput"> 
                 Esci
             </span>
         </a>
-        |
-        <span id="subspaninput"> Forum GAMES </span>
-        
-    {%else%}
-        <footbar>
-            <a href="{% url 'mUser:Login'%}" class="a-footer">
-                <span id="subspaninput"> 
-                    Accedi
-                </span>
-            </a>
-            |
-            <span id="subspaninput"> 
-                <a href="account/register" class="a-footer"> Registrazione </a>
-            </span>
-        </footbar>
-    {%endif%}
+
 {%endblock%}
 
 {%block title%}

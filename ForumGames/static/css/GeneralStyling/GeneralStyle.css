@@ -46,6 +46,7 @@ footbar {
     align-items: center;
 }
 
-.a-footer{
+.a-footer,.a-footer:visited{
     text-decoration: none;
+    color:blue;
 }

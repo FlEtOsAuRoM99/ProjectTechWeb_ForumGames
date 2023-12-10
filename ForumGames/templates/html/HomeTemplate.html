@@ -28,22 +28,19 @@
 
 {%block footbar%}
     {%if user.is_authenticated%}
-
-        <footbar>
+        <span id="subspaninput">
             <a href="{%url 'mUser:Logout'%}" class="a-footer"> Logout </a>
-        </footbar>
+        </span>
     {%else%}
-        <footbar>
+        <span id="subspaninput"> 
             <a href="{% url 'mUser:Login'%}" class="a-footer">
-                <span id="subspaninput"> 
-                    Login 
-                </span>
+                Login 
             </a>
-            |
-            <span id="subspaninput"> 
-                <a href="{%url 'mUser:Register'%}" class="a-footer"> Register </a>
-            </span>
-        </footbar>
+        </span>
+        |
+        <span id="subspaninput"> 
+            <a href="{%url 'mUser:Register'%}" class="a-footer"> Register </a>
+        </span>
     {%endif%}
 {%endblock%}
 

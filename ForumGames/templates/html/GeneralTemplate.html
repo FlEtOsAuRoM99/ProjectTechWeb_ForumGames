@@ -35,6 +35,9 @@
                     </article>
                     <article>
                         <div id="error">
+                            {% if field.help_text %}
+                                <div style="color: grey">{{ field.help_text|safe }}</div>    
+                            {%endif%}
                             {%if messages %}
                                 {%for message in messages%}
                                     {{message}}
@@ -56,7 +59,9 @@
                     
                         {% block footbar %}
                         {% endblock %}
-                    
+                        | 
+                        <span id="subspaninput"> Forum GAMES </span>
+                
                 </footbar>
             </div>
         </div>  
