@@ -1,9 +1,12 @@
+from typing import Any
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login
+from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import RegUser
+from .forms import RegUser, logUser
+from django.contrib.auth import authenticate
 # Create your views here.
 
 def register_req(request):
@@ -27,9 +30,23 @@ def register_req(request):
                   template_name="html/account/register/Register.html",
                   context={"form":form, "error":form.errors})
 
+
+
 @login_required
 def logout_req(request):
     if request.method == "GET":
         logout(request)
     return redirect("Home")
 
+
+
+class Login(LoginView):
+    authentication_form = logUser
+    form_class = logUser
+    template_name = "html/account/login/Login.html"
+    def form_valid(self, form):
+        login(self.request, form.get_user())
+
+        return super(LoginView, self).form_valid(form)
+
+    

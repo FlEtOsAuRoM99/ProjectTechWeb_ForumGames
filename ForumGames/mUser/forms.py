@@ -1,13 +1,14 @@
 
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 import re
 
 class RegUser(forms.ModelForm):  
-    username = forms.CharField(label="Enter username", required=True, max_length=30, widget=forms.TextInput())
-    email = forms.EmailField(label="Enter email", required=True, max_length=40, widget=forms.EmailInput())
-    password = forms.CharField(label="Enter password", required=True, max_length=300, widget=forms.PasswordInput())
-    c_password = forms.CharField(label="Enter same password", required=True, max_length=300, widget=forms.PasswordInput())
+    username = forms.CharField(label="", required=True, max_length=30, widget=forms.TextInput(attrs={"placeholder": "Inserire username"}))
+    email = forms.EmailField(label="", required=True, max_length=40, widget=forms.EmailInput(attrs={"placeholder": "Inserire email"}))
+    password = forms.CharField(label="", required=True, max_length=300, widget=forms.PasswordInput(attrs={"placeholder": "Inserire password"}))
+    c_password = forms.CharField(label="", required=True, max_length=300, widget=forms.PasswordInput(attrs={"placeholder": "Inserire la stessa password"}))
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -44,3 +45,39 @@ class RegUser(forms.ModelForm):
             if len(self.get_passwordByForm) >= 8 and re.search(re.compile(reg), self.get_passwordByForm):
                 return True
         return False
+    
+
+class logUser(AuthenticationForm):
+    
+    username = forms.CharField(label="", required=True, max_length=30, widget=forms.TextInput(attrs={"placeholder":"Inserire username"}))
+    password = forms.CharField(label="", required=True, max_length=300, widget=forms.PasswordInput(attrs={"placeholder":"Inserire password"}))
+    
+    def __init__(self, request=None, *args, **kwargs):
+        super().__init__(request=None, *args, **kwargs)
+        self.fields['username'].help_text = None
+        self.fields['password'].help_text = None
+    '''
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
+
+    class Meta:
+        model = User
+        fields = ["username","password"]
+
+        labels={
+            "username": "",
+            "password": "",
+        }
+        
+        help_texts = {
+            'username': None,
+            'password': None,
+        }
+
+        widgets={
+            "username": forms.TextInput(attrs={"placeholder":"Inserire username"}),
+            "password": forms.PasswordInput(attrs={"placeholder":"Inserire password"}),
+        }
+        '''
