@@ -13,6 +13,7 @@ footbar {
     width: 100%;
     text-align: center;
     background-color: white;
+    border-top: 1px solid pink;
 }
 
 #subspaninput {
@@ -49,4 +50,11 @@ footbar {
 .a-footer,.a-footer:visited{
     text-decoration: none;
     color:blue;
+
+}
+
+
+article{
+    margin-right: 10px;
+    margin-left: 10px;
 }

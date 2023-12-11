@@ -17,8 +17,6 @@
         </header>
         
         
-        {%block tuaConfigurazione%}
-        {%endblock%}
         <div class="div-menu">
             <h3> 
                 <a href="{%url "Home"%}" class="a-title">
@@ -28,40 +26,44 @@
             </h3>
             <main>
                 <div class="div-global">
-                    <article>
+
+                    {%block tuaConfigurazione%}
+                    {%endblock%}
+                    <article>             
                         {% block content %}
                         {% endblock %} 
+                        pdsa
                         
                     </article>
                     <article>
-                        <div id="error">
-                            {% if field.help_text %}
-                                <div style="color: grey">{{ field.help_text|safe }}</div>    
-                            {%endif%}
-                            {%if messages %}
-                                {%for message in messages%}
-                                    {{message}}
-                                {% endfor %}
-                            {%endif%}
+                        <div class="div-log"> 
+                            <div id="error">
+                                
+                                {%if messages %}
+                                    {%for message in messages%}
+                                        {{message}}
+                                    {% endfor %}
+                                {%endif%}
+                            </div>
                         </div>
                     </article>
                 </div>
+
                 <article>
                 </article>
             </main>
             
         </div>
-        <div class="div-menu-footbar">
 
+
+        <div class="div-menu-footbar">
             <div class="div-footbar">
-    
                 <footbar>
                     
                         {% block footbar %}
                         {% endblock %}
                         | 
                         <span id="subspaninput"> Forum GAMES </span>
-                
                 </footbar>
             </div>
         </div>  
