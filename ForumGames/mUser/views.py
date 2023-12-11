@@ -22,9 +22,8 @@ def register_req(request):
                     messages.error(request, "Errore nell'inserire la password")
             else:
                 messages.error(request, "Mail già in uso")
-                print("Mail già in uso")
         else:
-            messages.error(request, "Username non valido")
+            messages.error(request, "Username già in uso")
 
     return render(request=request,
                   template_name="html/account/register/Register.html",
@@ -43,10 +42,21 @@ def logout_req(request):
 class Login(LoginView):
     authentication_form = logUser
     form_class = logUser
-    template_name = "html/account/login/Login.html"
+    template_name="html/account/login/Login.html" 
+
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        
     def form_valid(self, form):
         login(self.request, form.get_user())
-
+        print(form.errors.as_json())
         return super(LoginView, self).form_valid(form)
-
     
+    def form_invalid(self, form):
+        
+        messages.error(self.request, "Username o password errate")
+        form.errors.pop("__all__")
+        return self.render_to_response(self.get_context_data(form=form))
+    
+    def get_success_url(self) -> str:
+        return super().get_success_url()
