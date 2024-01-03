@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 from django.contrib.auth.models import User
 from Videogame.models import PossVideogames
@@ -9,3 +10,21 @@ class Post(models.Model):
     FPS_ex = models.IntegerField()
     user_id = models.ForeignKey(User, on_delete=models.PROTECT,blank=True,null=True,default=None )
     videogames_id = models.ForeignKey(PossVideogames, on_delete=models.PROTECT, blank=True, null=True, default=None)
+
+
+class RepPost(models.Model):
+    R_ID_num = models.AutoField(primary_key=True)
+    Title = models.CharField(max_length=10)
+    Description = models.CharField(max_length=30)
+    Data = models.DateField()
+    Post_id = models.ForeignKey(Post, on_delete=models.PROTECT, blank=True, null=True, default=None)
+    user_id = models.ForeignKey(User, on_delete=models.PROTECT, blank=True, null=True, default=None)
+    onlyThatReportOnThatPost = models.CharField(max_length=1000, unique=True) #Somma tra Post_id e User_id
+
+
+
+class ComPost(models.Model):
+    C_ID_num = models.AutoField(primary_key=True)
+    Description = models.CharField(max_length=300)
+    Post_id = models.ForeignKey(Post, on_delete=models.PROTECT, blank=True, null=True, default=None)
+    user_id = models.ForeignKey(User, on_delete=models.PROTECT, blank=True, null=True, default=None)
