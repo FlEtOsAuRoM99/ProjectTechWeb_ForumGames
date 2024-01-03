@@ -46,6 +46,7 @@ class RegUser(forms.ModelForm):
                 return True
         return False
     
+    
 
 class logUser(AuthenticationForm):
     
