@@ -40,12 +40,35 @@ class RegUser(forms.ModelForm):
         return True
 
     def checkPassword(self):
-        reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,300}$"
+        
         if self.get_passwordByForm == self.get_c_passwordByForm:
-            if len(self.get_passwordByForm) >= 8 and re.search(re.compile(reg), self.get_passwordByForm):
+            capitalalphabets="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            smallalphabets="abcdefghijklmnopqrstuvwxyz"
+            specialchar="$@#\'\\<>{ }-àùè.:,;+*/[]()£\"!&%?ì^=_"
+            digits="0123456789"
+            if (len(self.get_passwordByForm) >= 8):
+                l = u = d = p = 0
+                for i in self.get_passwordByForm:
+            
+                    # counting lowercase alphabets
+                    if (i in smallalphabets):
+                        l+=1           
+            
+                    # counting uppercase alphabets
+                    if (i in capitalalphabets):
+                        u+=1           
+            
+                    # counting digits
+                    if (i in digits):
+                        d+=1           
+            
+                    # counting the mentioned special characters
+                    if(i in specialchar):
+                        p+=1       
+            if (l>=1 and u>=1 and p>=1 and d>=1 and l+p+u+d==len(self.get_passwordByForm)):
                 return True
+        
         return False
-    
     
 
 class logUser(AuthenticationForm):
