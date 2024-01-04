@@ -18,4 +18,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path("account/newVideogame", views.addVideogame, name="Libreria"),
 ]
