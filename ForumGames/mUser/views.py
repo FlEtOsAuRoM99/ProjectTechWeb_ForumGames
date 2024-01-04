@@ -10,8 +10,8 @@ from django.contrib.auth import authenticate
 # Create your views here.
 
 def register_req(request):
-    form = RegUser(request.POST or None)
     if request.method == 'POST':
+        form = RegUser(request.POST)
         if form.is_valid():
             if form.checkOnlyMail():
                 if form.checkPassword():
@@ -19,12 +19,13 @@ def register_req(request):
                     u.save()
                     return redirect("mUser:Login")
                 else:
-                    messages.error(request, "Errore nell'inserire la password")
+                    messages.error(request, "Errore, password debole")
             else:
                 messages.error(request, "Mail già in uso")
         else:
             messages.error(request, "Username già in uso")
 
+    form = RegUser()
     return render(request=request,
                   template_name="html/account/register/Register.html",
                   context={"form":form, "error":form.errors})
