@@ -1,20 +1,22 @@
 
 from django import forms
-from django.contrib.auth.models import User
 from .models import Post
-import re
 
 class WritePost(forms.ModelForm):  
 
-    title = forms.CharField(label="Enter title")
-
+    Title = forms.CharField(label="", required=True, max_length=30, widget=forms.TextInput(attrs={"placeholder": "Inserire il titolo"}))
+    Description = forms.CharField(label="", required=True, max_length=500, widget=forms.Textarea())
+    FPS_ex = forms.FloatField(label="", required=True, widget=forms.NumberInput(attrs={"placeholder": "Inserire gli FPS generati"}))
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
 
     class Meta: 
         model = Post
-        exlude =  ["P_ID_num", "user_id"]
-    
+        exclude =  ["P_ID_num", "user_id"]
+        labels={
+            'videogames_id': '',
+            'computer_id': ''
+        }
 
 
