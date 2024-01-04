@@ -21,7 +21,7 @@ class ComponentsComputer(models.Model):
         return self.nickname.username
     
     def __str__(self) -> str:
-        return "Computer di " + self.proprietario() + ": \nCPU: " + self.CPU + "\n,GPU: " + self.GPU + "\n,RAM: " + self.RAM + "\n,MEM: " + self.MEM + "\n,PSU: " + self.PSU + "\n,MOBO: " + self.MOBO
+        return "Computer di " + self.proprietario() + " " + str(self.Com_ID_num)
     
     def __dir__(self) -> Iterable:
         return [self.CPU, self.GPU, self.RAM, self.PSU, self.MOBO]
