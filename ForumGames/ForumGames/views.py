@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from Computer.models import ComponentsComputer
-
+from Post.forms import WritePost
 def home(request):
 
-    photo = elPC = None
+    photo = elPC = post = None
     if request.user.id != None:
         l = ComponentsComputer.objects.filter(nickname_id=request.user.id).all()
         if not l.exists():
@@ -18,8 +18,8 @@ def home(request):
                 elPC.append("PSU: " + l[i].PSU)
                 elPC.append("MOBO: " + l[i].MOBO)
                 photo = l[i].PC_Photo
-            
-    ctx={"elenco": elPC, "ph": photo}
+        post = WritePost(request.POST or None)
+    ctx={"elenco": elPC, "ph": photo, "form": post}
 
     return render(request=request, template_name="html/ForumGames/Blog.html", context=ctx)
                  
