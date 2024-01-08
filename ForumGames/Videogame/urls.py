@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
-
+app_name='Videogame'
 urlpatterns = [
     path("account/newVideogame", views.addVideogame, name="Libreria"),
 ]
