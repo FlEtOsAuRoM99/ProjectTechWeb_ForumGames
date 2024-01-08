@@ -1,12 +1,53 @@
 
-.div-sinistra{
-    border: 10px solid;
-    border-radius: 1;
-    border-color: black;
-}
-.div-configurazione{
+.div-contenitoreMenu{
+    z-index: -1;
+    flex-direction: column;
     position: absolute;
-    width: 20%;
-    padding: auto;
+    overflow-y: visible;
+    overflow-x: visible;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-shrink: 0;
+    padding-right: 10%;
 }
 
+.div-contenitoreMenuInterno{
+
+    position: static;
+    align-items: stretch;
+    flex-direction: row;
+    align-self: auto;
+    flex-grow: 0;
+
+}
+
+.div-configurazioneSinistra{
+
+    max-height: inherit;
+    min-width: inherit;
+    top: 24px;
+    height: inherit;
+    min-height: inherit;
+    width: inherit;
+    max-width: inherit;
+    justify-content: inherit;
+    flex-grow: inherit;
+    position: absolute;
+    border-right: 2px solid;
+
+    border-color: #b8b9ba;
+    
+}
+.div-config{
+    height: 100dvh;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.config{
+    margin-top: 20px;
+
+}

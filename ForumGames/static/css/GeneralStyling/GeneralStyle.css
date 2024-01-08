@@ -13,7 +13,7 @@ footbar {
     width: 100%;
     text-align: center;
     background-color: white;
-    border-top: 1px solid pink;
+    border-top: 1px solid #b8b9ba;
 }
 
 #subspaninput {
@@ -57,4 +57,10 @@ footbar {
 article{
     margin-right: 10px;
     margin-left: 10px;
+}
+
+.header-addConfigurazione{
+    border-bottom: 1px solid;
+
+    border-color: #b8b9ba;
 }

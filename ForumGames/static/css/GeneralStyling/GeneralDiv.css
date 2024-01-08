@@ -11,10 +11,8 @@ div{
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    top: 0;
 }
-
 .div-menu-footbar{
     position: relative;
 }
@@ -26,7 +24,10 @@ div{
     display: flex;
     vertical-align: baseline;
     margin: 0;
-    padding: 0; 
+    padding: 0;
+    border: solid; 
+    border-color: transparent;
+    
 
     
 }
@@ -37,9 +38,12 @@ div{
 }
 
 .div-separete {
-    border: solid;
     position: relative;
     padding-left: 0;
     padding-right: 100%;
-    border-color: transparent;
+    border-bottom: 2px solid;
+
+    border-color: #b8b9ba ;
+    margin-top: 10px;
+    margin-bottom: 2px;
 }
