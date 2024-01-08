@@ -3,41 +3,70 @@
 {%block newStyleSheet%}
 {%load static%}
 <link rel="stylesheet" href="{% static 'css/ConfigurazioneStyle.css' %}">
-
 {%endblock%}
 
 {%block tuaConfigurazione%}
     {%if user.is_authenticated %}
-        <div class="div-sinistar">
-            <article>
-                <div class="div-contenitore">
-                    <div class="div-configurazione">
-                        <div class="div-log">
-                            <h5> La tua configurazione </h5>
-                        </div>
-                        
-                        <div class="div-log"> 
-                            {%for i in elenco%}
-                                <br>
-                                <div>
-                                    <span id="subspaninput">{{i}}</span>
+        <div class="div-contenitoreMenu">
+
+            <div class="div-contenitoreMenuInterno">
+                <section>
+                            <div class="div-sinistra">
+                                
+                                <div class="div-configurazioneSinistra">
+                                    <div class="div-log">
+                                        <h5> Le configurazioni di {{user.username}} </h5>
+                                    </div>
+                            
+                                    <div class="config">
+                                        {%for i in elenco%}
+                                                
+                                    
+                                            {% if i.url == None %}
+                                                <div class="div-log">
+                                                    <span id="subspaninput">{{i}}</span>
+                                                </div>
+                                            {%else%}
+                                                <div class="div-log">
+                                                    <img src="{{i.url}}" width="90%" height="80%"/>
+                                                </div>
+                                            {%endif%}
+                                            <div class="div-separete"></div>
+
+                                        {%endfor%} 
+                                            
+                                        
+
+                                    </div>
+                                    
                                 </div>
-                            {%endfor%} 
+                            </div>
                         </div>
-                        <div class="div-log">
-                            <img src="{{ph.url}}" width="100%" height="100%"/>
-                        </div>
-                    </div>
-                </div>
-            </article>
+                </section>
+            </div>
         </div>
+        
     {%endif%}
 {%endblock%}
 
 {%block bodyBlog%}
-    <div class="div-separete"></div>
-    {%csrf_token%}
-    {{form.as_div}}
+    {%if user.is_authenticated %}
+        <article>
+                    
+            <div class="div-InternalMenu">
+                <div class="div-log"> 
+                    {%csrf_token%}
+                    {{form.as_div}}
+                    <div class="div-log">
+                        <button class="buttonLog" type="submit"  href="{%url "Post:Insert"%}">
+                            <div>Inserisci</div>
+                        </button> 
+                    </div> 
+                </div>
+            
+            <div class="div-separete"></div>
+        </article>
+    {%endif%}
 {%endblock%}
 
 

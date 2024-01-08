@@ -6,9 +6,16 @@
     {%if user.is_authenticated%}
         <div class="div-log">
             <a href="{%url 'Computer:createComputer'%}"class="a-footer">
-                Create 
+                Aggiungi 
             </a>
-            your new computer
+            un nuovo computer
+        </div>
+        <br>
+        <div class="div-log">
+            <a href="{%url 'Videogame:Libreria'%}"class="a-footer">
+                Aggiungi 
+            </a>
+            un videogioco
         </div>
     {%endif%}
 {%endblock%}

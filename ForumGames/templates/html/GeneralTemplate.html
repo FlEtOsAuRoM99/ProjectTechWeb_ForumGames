@@ -4,6 +4,7 @@
         {%load static%}
         <link rel="stylesheet" href="{% static 'css/GeneralStyling/GeneralStyle.css' %}">
         <link rel="stylesheet" href="{% static 'css/GeneralStyling/GeneralDiv.css' %}">
+        
         {%block newStyleSheet%}
         {%endblock%}
         {%block title%}
@@ -11,30 +12,32 @@
     </head>
     <body>
         <header>
-            {%block contentHeader%}
-            {%endblock%}
-        
+            <div  class="header-addConfigurazione">
+                {%block contentHeader%}
+                {%endblock%}
+            </div>
         </header>
         
-        
-        <div class="div-menu">
-            <h3> 
-                <a href="{%url "Home"%}" class="a-title">
-                    {%block LOGO%}
-                    {%endblock%}
-                </a> 
-            </h3>
-            <main>
+        <main>  
+
+            <div class="div-menu">
+                <h3> 
+                    <a href="{%url "Home"%}" class="a-title">
+                        {%block LOGO%}
+                        {%endblock%}
+                    </a> 
+                </h3>
                 <div class="div-global">
 
+                   
+                    
                     {%block tuaConfigurazione%}
                     {%endblock%}
-                    <article>             
-                        {% block content %}
-                        {% endblock %} 
-                        pdsa
-                        
-                    </article>
+
+
+                    {% block content %}
+                    {% endblock %} 
+                 
                     <article>
                         <div class="div-log"> 
                             <div id="error">
@@ -47,13 +50,9 @@
                             </div>
                         </div>
                     </article>
-                </div>
-
-                <article>
-                </article>
-            </main>
-            
-        </div>
+                </div>                
+            </div>
+        </main>
 
 
         <div class="div-menu-footbar">
