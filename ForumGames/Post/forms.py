@@ -18,5 +18,13 @@ class WritePost(forms.ModelForm):
             'videogames_id': '',
             'computer_id': ''
         }
+        widgets={
+            'videogames_id':forms.Select(attrs={"width":"10px"})
+        }
 
-
+    def savePost(self, request):
+        post = Post()
+        post.Title = self.Title
+        post.Description = self.Description
+        post.computer_id = self.computer_id
+        print(self.computer_id)

@@ -20,6 +20,8 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+app_name='Post'
+
 urlpatterns = [
-    path("blog", views.postInsert, name="Insert"),
+    path("", views.postInsert, name="Insert"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
